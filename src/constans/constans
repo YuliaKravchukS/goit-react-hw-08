@@ -1,0 +1,10 @@
+export const INITAL_STATE = {
+  contacts: {
+    items: [],
+    loading: false,
+    error: null,
+  },
+  filters: {
+    name: "",
+  },
+};

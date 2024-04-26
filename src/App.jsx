@@ -1,30 +1,61 @@
 // import { useState, useEffect } from "react";
 import "./App.css";
-import ContactForm from "./components/ContactForm/ContactForm";
-import SearchBox from "./components/SearchBox/SearchBox";
-import ContactList from "./components/ContactList/ContactList";
 import { selectError, selectLoading } from "./redux/contactsSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { fetchContacts } from "./redux/contactsOps";
-//import usersData from "./userData.json";
-// import { nanoid } from "nanoid";
-function App() {
-  const loading = useSelector(selectLoading);
-  const error = useSelector(selectError);
+import Layout from "./components/Layout.jsx/Layout";
+import Loader from "./components/Loader/Loader";
+import { Router, Routes } from "react-router-dom";
+import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+const ContactsPage = lazy(() => import("./pages/ContactsPage"));
+const HomePage = lazy(() => import("./pages/HomePage"));
+const LoginPage = lazy(() => import("./pages/LoginPage"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const RegistrationPage = lazy(() => import("./pages/RegistrationPage"));
+
+function App() {
+  // const loading = useSelector(selectLoading);
+  // const error = useSelector(selectError);
+
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(fetchContacts());
+  // }, [dispatch]);
   return (
-    <div>
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <SearchBox />
-      {loading && !error && <b>Request in progress...</b>}
-      <ContactList />
-    </div>
+    <Layout>
+      <Suspense fallback={<Loader />}></Suspense>
+      <Routes>
+        <Router path="/" element={<HomePage />} />
+        <Router
+          path="/register"
+          element={
+            <RestrictedRoute>
+              <RegistrationPage />
+            </RestrictedRoute>
+          }
+        />
+        <Router
+          path="/login"
+          element={
+            <RestrictedRoute>
+              <LoginPage />
+            </RestrictedRoute>
+          }
+        />
+        <Router
+          path="/contacts"
+          element={
+            <PrivateRoute>
+              <ContactsPage />
+            </PrivateRoute>
+          }
+        />
+        <Router path="*" element={<NotFound />} />
+      </Routes>
+    </Layout>
   );
 }
 

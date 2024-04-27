@@ -1,0 +1,6 @@
+nav {
+  display: flex;
+  border-bottom: 2px solid gray;
+  /* padding: 0 30px; */
+  /* gap: 1px; */
+}

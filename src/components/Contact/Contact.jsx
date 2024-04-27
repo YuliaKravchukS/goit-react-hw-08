@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux";
 import { deleteContact } from "../../redux/contacts/operations";
 const Contact = ({ user }) => {
   const dispatch = useDispatch();
-  //  const users = useSelector(selectContacts);
   const onDeleteUser = (userId) => {
     dispatch(deleteContact(userId));
   };

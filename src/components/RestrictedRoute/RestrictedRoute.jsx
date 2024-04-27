@@ -1,9 +1,10 @@
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
+import { selectIsLoggedIn } from "../../redux/auth/selector";
 
 const RestrictedRoute = ({ children }) => {
-  const isRefreshing = useSelector(selectIsRefreshing);
-  return isRefreshing ? <Navigate to="/contacts" replace /> : children;
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  return isLoggedIn ? <Navigate to="/contacts" replace /> : children;
 };
 
 export default RestrictedRoute;

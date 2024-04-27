@@ -1,11 +1,7 @@
 const HomePage = () => {
   return (
     <div>
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <SearchBox />
-      {loading && !error && <b>Request in progress...</b>}
-      <ContactList />
+      <p>Welcome to our app🎉!</p>
     </div>
   );
 };

@@ -1,5 +1,5 @@
-import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { INITAL_STATE } from "../../constans/constans";
+import { createSlice } from "@reduxjs/toolkit";
+import { INITIAL_STATE } from "../../constans/constans";
 
 import { login, logout, refreshUser, register } from "./operations";
 const handlePending = (state) => {
@@ -13,7 +13,7 @@ const handleRejected = (state) => {
 };
 const authSlice = createSlice({
   name: "auth",
-  initialState: INITAL_STATE.auth,
+  initialState: INITIAL_STATE.auth,
 
   extraReducers: (builder) =>
     builder
@@ -35,7 +35,7 @@ const authSlice = createSlice({
       .addCase(login.rejected, handleRejected)
       .addCase(logout.pending, handlePending)
       .addCase(logout.fulfilled, () => {
-        return INITAL_STATE.auth;
+        return INITIAL_STATE.auth;
       })
 
       .addCase(logout.rejected, handleRejected)

@@ -1,5 +1,7 @@
 .form {
   display: flex;
+  /* background-color: rgba(116, 123, 255, 0.1); */
+  background-color: #242424;
   flex-direction: column;
   justify-content: center;
   align-items: center;

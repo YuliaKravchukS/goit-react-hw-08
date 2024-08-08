@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 import { selectIsRefreshing } from "./redux/auth/selector";
 const ContactsPage = lazy(() => import("./pages/ContactsPage"));
-const HomePage = lazy(() => import("./pages/HomePage"));
+const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const LoginPage = lazy(() => import("./pages/LoginPage"));
 const NotFound = lazy(() => import("./pages/NotFoundPage"));
 const RegistrationPage = lazy(() => import("./pages/RegistrationPage "));

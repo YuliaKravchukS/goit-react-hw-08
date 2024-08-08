@@ -1,0 +1,7 @@
+.wrapImg {
+  /* background-image: url("../../assets/phoneFon.jpg"); */
+  width: 300px;
+
+  background-color: rgba(116, 123, 255, 0.1);
+  background-repeat: no-repeat;
+}

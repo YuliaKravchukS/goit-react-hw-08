@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectError, selectLoading } from "../redux/contacts/selectors";
 import { useEffect } from "react";
 import { fetchContacts } from "../redux/contacts/operations";
-
+import css from "./ContactsPage.module.css";
 const ContactsPage = () => {
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
@@ -15,7 +15,7 @@ const ContactsPage = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className={css.wrap}>
       <h1>Phonebook</h1>
       <ContactForm />
       <SearchBox />
